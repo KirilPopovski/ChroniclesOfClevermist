@@ -19,6 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                <img width="26" height="20" src="~/img/mainLogo.png" />
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +43,7 @@
         </nav>
     </header>
     
-    <div class="container">
+    <div class="parallax">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
@@ -61,6 +62,8 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/parallax.js"></script>
+        <script src="~/lib/jquery/dist/scrollButton.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
@@ -68,6 +71,8 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/parallax.js"></script>
+        <script src="~/lib/jquery/dist/scrollButton.js"></script>
     </environment>
 
     @this.RenderSection("Scripts", required: false)

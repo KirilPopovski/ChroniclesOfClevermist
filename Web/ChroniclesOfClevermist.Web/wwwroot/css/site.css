@@ -54,3 +54,64 @@ body {
     height: 60px;
     line-height: 60px; /* Vertically center the text there */
 }
+
+.parallax {
+    background-image: url('../img/mainBG.jpg');
+    height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+#mydiv {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 360px;
+}
+
+.btn-purple {
+    width: 160px;
+    background: #214ddc;
+    color: azure;
+    padding: 10px;
+    position: fixed;
+    bottom: 20%;
+    left: 20%;
+    opacity: 0;
+}
+
+.btn-blue {
+    width: 160px;
+    background: #214ddc;
+    color: azure;
+    padding: 10px;
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    opacity: 0;
+}
+
+.btn-purple.scrolled {
+    transition: opacity 1000ms ease-in-out;
+    opacity: 1;
+}
+
+.btn-blue.scrolled {
+    transition: opacity 1000ms ease-in-out;
+    opacity: 1;
+}
+
+.myheader {
+    background: #721a71;
+    color: #fff;
+    padding: 10px;
+}
+
+.mybody {
+    background: #f5f5f5;
+    padding: 10px;
+}
