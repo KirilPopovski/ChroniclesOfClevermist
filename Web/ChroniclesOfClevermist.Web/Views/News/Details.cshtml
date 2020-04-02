@@ -1,0 +1,14 @@
+﻿@using ChroniclesOfClevermist.Common
+@model ChroniclesOfClevermist.Web.ViewModels.News.NewsDetailsViewModel
+@{
+    this.ViewData["Title"] = "Details";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">@Model.Title</h1>
+    <img src="data:image;base64,@Convert.ToBase64String(Model.Image)" class="card-img-top" alt="@Model.Title">
+    <p>@Model.Content</p>
+    <a class="btn btn-primary btn-lg" asp-controller="News" asp-action="All" role="button">Learn more</a>
+</div>
+
+
