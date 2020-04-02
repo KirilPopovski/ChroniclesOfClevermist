@@ -57,11 +57,12 @@ body {
 
 .parallax {
     background-image: url('../img/mainBG.jpg');
-    height: 700px;
+    height: 1100px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-top: inherit;
 }
 
 
@@ -75,23 +76,13 @@ body {
 
 .btn-purple {
     width: 160px;
-    background: #214ddc;
     color: azure;
-    padding: 10px;
-    position: fixed;
-    bottom: 20%;
-    left: 20%;
     opacity: 0;
 }
 
 .btn-blue {
     width: 160px;
-    background: #214ddc;
     color: azure;
-    padding: 10px;
-    position: fixed;
-    bottom: 20%;
-    left: 50%;
     opacity: 0;
 }
 
