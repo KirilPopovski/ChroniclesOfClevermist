@@ -13,9 +13,13 @@
                 <div class="card-body">
                     <h5 class="card-title">@i.Title</h5>
                     <p class="card-text">@i.Content</p>
-                    <a class="btn btn-primary" asp-controller="News" asp-action="Details" >Read more</a>
+                    <a class="btn btn-primary" onclick="location.href='@Url.Action("Details", "News", new { Id = i.Id})'">Read more</a>
                 </div>
             </div>
         </div>
     }
 </div>
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <a class="btn btn-primary" asp-controller="News" asp-action="Add">Add news</a>
+}

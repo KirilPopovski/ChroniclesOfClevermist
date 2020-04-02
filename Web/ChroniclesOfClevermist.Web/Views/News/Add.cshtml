@@ -1,0 +1,25 @@
+﻿@using ChroniclesOfClevermist.Common
+@model ChroniclesOfClevermist.Web.ViewModels.News.NewsInputViewModel
+@{
+    this.ViewData["Title"] = "News";
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" type="text" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content">Content</label>
+        <input asp-for="Content" type="text" class="form-control">
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Choose image</label>
+        <input asp-for="Image" type="file" class="form-control-file" id="exampleFormControlFile1">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

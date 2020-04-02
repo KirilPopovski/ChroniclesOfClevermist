@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using ChroniclesOfClevermist.Data.Common.Repositories;
 
     using ChroniclesOfClevermist.Data.Models;
@@ -15,6 +15,19 @@
         public NewsService(IDeletableEntityRepository<News> newsRepo)
         {
             this.newsRepo = newsRepo;
+        }
+
+        public async Task CreateAsync(string title, string content, byte[] image)
+        {
+            var news = new News
+            {
+                Title = title,
+                Content = content,
+                Image = image,
+            };
+            await this.newsRepo.AddAsync(news);
+            await this.newsRepo.SaveChangesAsync();
+            return;
         }
 
         public IEnumerable<T> GetAllNews<T>()
