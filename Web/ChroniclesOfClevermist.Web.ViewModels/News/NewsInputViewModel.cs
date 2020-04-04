@@ -1,6 +1,8 @@
 ﻿namespace ChroniclesOfClevermist.Web.ViewModels.News
 {
+    using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
+    using System.IO;
 
     public class NewsInputViewModel
     {
@@ -12,6 +14,6 @@
         public string Content { get; set; }
 
         [Required]
-        public byte[] Image { get; set; }
+        public IFormFile Image { get; set; }
     }
 }

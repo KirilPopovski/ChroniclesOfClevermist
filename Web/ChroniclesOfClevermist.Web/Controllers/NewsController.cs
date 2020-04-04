@@ -19,7 +19,15 @@
 
         public IActionResult All()
         {
-            var news = this.newsService.GetAllNews<NewsDetailsViewModel>();
+            var news = this.newsService.GetAllNews<NewsDetailsViewModel>().OrderByDescending(x => x.CreatedOn);
+            foreach (var item in news)
+            {
+                if (item.Content.Length > 50)
+                {
+                    item.Content = item.Content.Substring(0, 50) + "...";
+                }
+            }
+
             var model = new AllNewsViewModel { News = news };
             return this.View(model);
         }
@@ -30,12 +38,14 @@
             return this.View(model);
         }
 
+        //TODO remove comments
         //[Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Add()
         {
             return this.View();
         }
 
+        //TODO remove comments
         //[Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Add(NewsInputViewModel input)
@@ -45,7 +55,9 @@
                 return this.View(input);
             }
 
-            await this.newsService.CreateAsync(input.Title, input.Content, input.Image);
+            byte[] image = new byte[input.Image.Length];
+            await input.Image.OpenReadStream().ReadAsync(image, 0, image.Length);
+            await this.newsService.CreateAsync(input.Title, input.Content, image);
             return this.Redirect("/News/All");
         }
     }

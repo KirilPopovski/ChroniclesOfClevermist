@@ -2,6 +2,7 @@
 {
     using ChroniclesOfClevermist.Data.Models;
     using ChroniclesOfClevermist.Services.Mapping;
+    using System;
 
     public class NewsDetailsViewModel : IMapFrom<News>
     {
@@ -12,5 +13,7 @@
         public string Content { get; set; }
 
         public byte[] Image { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }
