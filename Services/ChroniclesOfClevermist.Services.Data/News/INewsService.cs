@@ -10,5 +10,7 @@
         IEnumerable<T> GetAllNews<T>();
 
         Task CreateAsync(string title, string content, byte[] image);
+
+        Task RemoveAsync(string id);
     }
 }

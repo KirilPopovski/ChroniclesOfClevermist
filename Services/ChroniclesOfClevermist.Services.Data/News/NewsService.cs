@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using ChroniclesOfClevermist.Data.Common.Repositories;
 
     using ChroniclesOfClevermist.Data.Models;
@@ -33,6 +34,18 @@
         public IEnumerable<T> GetAllNews<T>()
         {
             return this.newsRepo.All().To<T>().ToList();
+        }
+
+        public async Task RemoveAsync(string id)
+        {
+            var news = this.newsRepo.All().Where(x => x.Id == id).FirstOrDefault();
+            if (news != null)
+            {
+                this.newsRepo.Delete(news);
+                await this.newsRepo.SaveChangesAsync();
+            }
+
+            return;
         }
     }
 }

@@ -4,12 +4,16 @@
     this.ViewData["Title"] = "Details";
 }
 
-    <div class="jumbotron">
-        <h1 class="display-4">@Model.Title</h1>
-        <img src="data:image;base64,@Convert.ToBase64String(Model.Image)" class="card-img-top" alt="@Model.Title">
-        <p>@Model.CreatedOn</p>
-        <p>@Model.Content</p>
-        <a class="btn btn-primary btn-lg" asp-controller="News" asp-action="All" role="button">Back to all news</a>
-    </div>
+<div class="jumbotron">
+    <h1 class="display-4">@Model.Title</h1>
+    <img src="data:image;base64,@Convert.ToBase64String(Model.Image)" class="card-img-top" alt="@Model.Title">
+    <p>@Model.CreatedOn</p>
+    <p>@Model.Content</p>
+    <a class="btn btn-primary btn-lg" asp-controller="News" asp-action="All" role="button">Back to all news</a>
+</div>
 
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <a class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Delete", "News", new { Id = Model.Id })'">Delete current news</a>
+}
 

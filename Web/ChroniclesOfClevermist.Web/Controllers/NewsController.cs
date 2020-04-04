@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using ChroniclesOfClevermist.Common;
     using ChroniclesOfClevermist.Services.Data.News;
     using ChroniclesOfClevermist.Web.ViewModels.News;
@@ -19,7 +20,7 @@
 
         public IActionResult All()
         {
-            var news = this.newsService.GetAllNews<NewsDetailsViewModel>().OrderByDescending(x => x.CreatedOn);
+            var news = this.newsService.GetAllNews<NewsDetailsViewModel>().Where(x => x.IsDeleted == false).OrderByDescending(x => x.CreatedOn);
             foreach (var item in news)
             {
                 if (item.Content.Length > 50)
@@ -38,15 +39,13 @@
             return this.View(model);
         }
 
-        //TODO remove comments
-        //[Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Add()
         {
             return this.View();
         }
 
-        //TODO remove comments
-        //[Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Add(NewsInputViewModel input)
         {
@@ -58,6 +57,13 @@
             byte[] image = new byte[input.Image.Length];
             await input.Image.OpenReadStream().ReadAsync(image, 0, image.Length);
             await this.newsService.CreateAsync(input.Title, input.Content, image);
+            return this.Redirect("/News/All");
+        }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await this.newsService.RemoveAsync(id);
             return this.Redirect("/News/All");
         }
     }
