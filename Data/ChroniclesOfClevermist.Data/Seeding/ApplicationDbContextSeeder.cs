@@ -28,6 +28,7 @@
                               new RolesSeeder(),
                               new SettingsSeeder(),
                               new NewsSeeder(),
+                              new QuestionsSeeder(),
                           };
 
             foreach (var seeder in seeders)

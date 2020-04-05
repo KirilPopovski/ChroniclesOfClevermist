@@ -1,0 +1,14 @@
+﻿@model ChroniclesOfClevermist.Web.ViewModels.QuestionsAndAnswers.AllAnswersViewModel
+@{
+    this.ViewData["Title"] = "Answers";
+}
+
+<div>
+    <p>@Model.QuestionText</p>
+</div>
+
+@foreach (var answer in Model.Answers)
+{
+    <p>@answer.Text</p>
+    <p>@answer.CreatedOn</p>
+}
