@@ -24,3 +24,16 @@
 {
     <a class="btn btn-primary" asp-controller="News" asp-action="Add">Add news</a>
 }
+
+@if (this.User.IsInRole(GlobalConstants.UserRoleName))
+{
+    if (!this.Model.IsSubscribed)
+    {
+        <a class="btn btn-primary" asp-controller="News" asp-action="SubscribeToNewsletter">Subscribe to our newsletter</a>
+    }
+
+    else
+    {
+        <a class="btn btn-primary" asp-controller="News" asp-action="SubscribeToNewsletter">Unsubscribe from newsletter</a>
+    }
+}

@@ -4,4 +4,9 @@
 }
 
 <h1>@this.ViewData["Title"]</h1>
-Settings: @this.Model.SettingsCount
+
+<div class="alert-info">Number of users: @Model.CountOfUsers</div>
+
+<button class="btn btn-danger" asp-controller="Dashboard" asp-action="RemoveUser">Remove user</button>
+
+

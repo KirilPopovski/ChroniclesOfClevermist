@@ -1,7 +1,7 @@
 ﻿namespace ChroniclesOfClevermist.Web
 {
     using System.Reflection;
-
+    using ChroniclesOfClevermist.Common;
     using ChroniclesOfClevermist.Data;
     using ChroniclesOfClevermist.Data.Common;
     using ChroniclesOfClevermist.Data.Common.Repositories;
@@ -18,6 +18,7 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -50,6 +51,7 @@
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
             services.AddSingleton(this.configuration);
 
@@ -59,7 +61,7 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
+            services.AddTransient<IEmailSender>(x => new SendGridEmailSender(GlobalConstants.SendgridKey));
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IQuestionsAndAnswersService, QuestionsAndAnswersService>();

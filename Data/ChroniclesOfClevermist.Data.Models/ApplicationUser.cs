@@ -18,6 +18,8 @@ namespace ChroniclesOfClevermist.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
+        public bool IsSubscribedToNewsletter { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 

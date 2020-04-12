@@ -5,5 +5,7 @@
     public class AllNewsViewModel
     {
         public IEnumerable<NewsDetailsViewModel> News { get; set; }
+
+        public bool IsSubscribed { get; set; }
     }
 }
