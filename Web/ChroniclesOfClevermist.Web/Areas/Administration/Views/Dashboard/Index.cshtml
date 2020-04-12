@@ -7,6 +7,14 @@
 
 <div class="alert-info">Number of users: @Model.CountOfUsers</div>
 
-<button class="btn btn-danger" asp-controller="Dashboard" asp-action="RemoveUser">Remove user</button>
+<form enctype="multipart/form-data" method="post">
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="text" class="form-control">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" asp-controller="Dashboard" asp-action="RemoveUser">Remove user</button>
+</form>
 
 
