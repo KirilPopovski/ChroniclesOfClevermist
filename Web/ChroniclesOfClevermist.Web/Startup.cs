@@ -1,6 +1,7 @@
 ﻿namespace ChroniclesOfClevermist.Web
 {
     using System.Reflection;
+
     using ChroniclesOfClevermist.Common;
     using ChroniclesOfClevermist.Data;
     using ChroniclesOfClevermist.Data.Common;
@@ -39,7 +40,13 @@
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
+            services.AddDefaultIdentity<ApplicationUser>(options =>
+            {
+                options.SignIn.RequireConfirmedEmail = true;
+                options.Password.RequiredLength = 8;
+                options.Lockout.MaxFailedAccessAttempts = 20;
+                options.User.RequireUniqueEmail = true;
+            })
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.Configure<CookiePolicyOptions>(
@@ -49,10 +56,14 @@
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options =>
+            options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             services.AddRazorPages();
-            services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-
+            services.AddMvc();
+            services.AddAuthentication().AddSteam(options =>
+            {
+                options.ApplicationKey = GlobalConstants.SteamApiKey;
+            });
             services.AddSingleton(this.configuration);
 
             // Data repositories

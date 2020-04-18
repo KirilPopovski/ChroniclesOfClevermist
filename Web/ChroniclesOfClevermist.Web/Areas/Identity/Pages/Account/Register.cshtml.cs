@@ -96,7 +96,7 @@ namespace ChroniclesOfClevermist.Web.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(GlobalConstants.Email, GlobalConstants.CompanyName, Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    if (_userManager.Options.SignIn.RequireConfirmedEmail)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
                     }

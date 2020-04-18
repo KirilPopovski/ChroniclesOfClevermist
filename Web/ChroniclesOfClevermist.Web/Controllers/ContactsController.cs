@@ -1,7 +1,6 @@
 ﻿namespace ChroniclesOfClevermist.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using SteamKit2;
 
     public class ContactsController : Controller
     {
