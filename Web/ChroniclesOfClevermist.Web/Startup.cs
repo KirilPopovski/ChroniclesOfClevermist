@@ -24,6 +24,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using SteamKit2;
 
     public class Startup
     {
@@ -73,7 +74,6 @@
 
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(GlobalConstants.SendgridKey));
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IQuestionsAndAnswersService, QuestionsAndAnswersService>();
         }
