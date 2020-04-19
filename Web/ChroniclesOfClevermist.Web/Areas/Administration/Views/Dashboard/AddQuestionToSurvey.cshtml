@@ -1,0 +1,20 @@
+﻿@model ChroniclesOfClevermist.Web.ViewModels.Administration.Dashboard.AddOpinionModel
+@{
+    this.ViewData["Title"] = "AddQuestionToSurvey";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+<form enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Opinion">Question</label>
+        <input asp-for="Opinion" type="text" class="form-control">
+        <span asp-validation-for="Opinion" class="text-danger"></span>
+        <input asp-for="SurveyTopic" type="hidden" class="form-control" value="@this.TempData["Topic"]">
+    </div>
+    <button type="submit" class="btn btn-primary" asp-controller="Dashboard" asp-action="AddQuestionToSurvey">Add Question to survey</button>
+</form>
+
+<a class="btn btn-primary" asp-controller="Dashboard" asp-action="CompleteSurvey">Complete survey</a>
+
+

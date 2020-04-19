@@ -1,0 +1,16 @@
+﻿@model ChroniclesOfClevermist.Web.ViewModels.Surveys.AllQuestionsViewModel
+
+@{
+    this.ViewData["Title"] = "Fill survey";
+}
+
+<form enctype="multipart/form-data" method="post">
+    @foreach (var question in Model.Questions)
+    {
+        <div class="form-group">
+            <label asp-for="@question.Key">@question.Key</label>
+            <input asp-for="@question.Value" type="text" class="form-control">
+        </div>
+    }
+    <button type="submit" asp-controller="Surveys" asp-action="Fill" class="btn btn-primary">Complete</button>
+</form>

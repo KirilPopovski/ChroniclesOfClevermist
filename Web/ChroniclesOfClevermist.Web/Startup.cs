@@ -12,6 +12,7 @@
     using ChroniclesOfClevermist.Services.Data;
     using ChroniclesOfClevermist.Services.Data.News;
     using ChroniclesOfClevermist.Services.Data.QuestionsAndAnswers;
+    using ChroniclesOfClevermist.Services.Data.Surveys;
     using ChroniclesOfClevermist.Services.Mapping;
     using ChroniclesOfClevermist.Services.Messaging;
     using ChroniclesOfClevermist.Web.ViewModels;
@@ -76,6 +77,7 @@
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(GlobalConstants.SendgridKey));
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IQuestionsAndAnswersService, QuestionsAndAnswersService>();
+            services.AddTransient<ISurveyService, SurveyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
