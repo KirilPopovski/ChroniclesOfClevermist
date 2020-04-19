@@ -30,6 +30,12 @@
 
         public DbSet<Answer> Answers { get; set; }
 
+        public DbSet<Survey> Surveys { get; set; }
+
+        public DbSet<Opinion> Opinions { get; set; }
+
+        public DbSet<UserOpinion> UserOpinions { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

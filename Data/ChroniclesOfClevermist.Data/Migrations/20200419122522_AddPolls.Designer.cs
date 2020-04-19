@@ -4,14 +4,16 @@ using ChroniclesOfClevermist.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChroniclesOfClevermist.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200419122522_AddPolls")]
+    partial class AddPolls
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,6 +217,11 @@ namespace ChroniclesOfClevermist.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -241,7 +248,44 @@ namespace ChroniclesOfClevermist.Data.Migrations
 
                     b.HasIndex("SurveyId");
 
-                    b.ToTable("Opinions");
+                    b.ToTable("Opinion");
+                });
+
+            modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.Option", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SurveyId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasMaxLength(300);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("Option");
                 });
 
             modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.Question", b =>
@@ -302,45 +346,16 @@ namespace ChroniclesOfClevermist.Data.Migrations
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Surveys");
-                });
-
-            modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.UserOpinion", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OpinionId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("OpinionId");
-
-                    b.ToTable("UserOpinions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -461,11 +476,18 @@ namespace ChroniclesOfClevermist.Data.Migrations
                         .HasForeignKey("SurveyId");
                 });
 
-            modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.UserOpinion", b =>
+            modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.Option", b =>
                 {
-                    b.HasOne("ChroniclesOfClevermist.Data.Models.Opinion", "Opinion")
-                        .WithMany("UserOpinions")
-                        .HasForeignKey("OpinionId");
+                    b.HasOne("ChroniclesOfClevermist.Data.Models.Survey", "Survey")
+                        .WithMany("Options")
+                        .HasForeignKey("SurveyId");
+                });
+
+            modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.Survey", b =>
+                {
+                    b.HasOne("ChroniclesOfClevermist.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

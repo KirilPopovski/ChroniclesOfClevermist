@@ -4,14 +4,16 @@ using ChroniclesOfClevermist.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChroniclesOfClevermist.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200419130040_ChangePollsModel")]
+    partial class ChangePollsModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -241,7 +243,7 @@ namespace ChroniclesOfClevermist.Data.Migrations
 
                     b.HasIndex("SurveyId");
 
-                    b.ToTable("Opinions");
+                    b.ToTable("Opinion");
                 });
 
             modelBuilder.Entity("ChroniclesOfClevermist.Data.Models.Question", b =>
@@ -340,7 +342,7 @@ namespace ChroniclesOfClevermist.Data.Migrations
 
                     b.HasIndex("OpinionId");
 
-                    b.ToTable("UserOpinions");
+                    b.ToTable("UserOpinion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
