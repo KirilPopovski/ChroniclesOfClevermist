@@ -5,12 +5,14 @@
 }
 
 <form enctype="multipart/form-data" method="post">
-    @foreach (var question in Model.Questions)
+    @for (int i = 0; i < Model.Questions.Count; i++)
     {
-        <div class="form-group">
-            <label asp-for="@question.Key">@question.Key</label>
-            <input asp-for="@question.Value" type="text" class="form-control">
+        <div class="text-center">
+            <label asp-for="@Model.Questions[i].Question">@Model.Questions[i].Question</label>
+            <input type="hidden" asp-for="@Model.Questions[i].Question" />
+            <input asp-for="@Model.Questions[i].Answer" />
         </div>
     }
+    <input type="hidden" asp-for="@Model.Topic" value="@this.TempData["topic"]" />
     <button type="submit" asp-controller="Surveys" asp-action="Fill" class="btn btn-primary">Complete</button>
 </form>

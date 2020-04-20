@@ -4,6 +4,8 @@
 
     public class AllQuestionsViewModel
     {
-        public Dictionary<string, string> Questions { get; set; }
+        public string Topic { get; set; }
+
+        public List<QuestionViewModel> Questions { get; set; }
     }
 }

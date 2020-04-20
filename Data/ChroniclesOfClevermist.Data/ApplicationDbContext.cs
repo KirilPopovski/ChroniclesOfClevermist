@@ -36,6 +36,8 @@
 
         public DbSet<UserOpinion> UserOpinions { get; set; }
 
+        public DbSet<UserSurvey> UsersSurveys { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

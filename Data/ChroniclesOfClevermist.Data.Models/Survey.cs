@@ -21,5 +21,7 @@
         public DateTime ExpiresOn { get; set; }
 
         public IEnumerable<Opinion> Opinions { get; set; }
+
+        public IEnumerable<UserSurvey> UsersSurveys { get; set; }
     }
 }
