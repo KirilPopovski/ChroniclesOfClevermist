@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using ChroniclesOfClevermist.Data.Common.Repositories;
     using ChroniclesOfClevermist.Data.Models;
@@ -31,6 +32,18 @@
         public string GetQuestionText(string id)
         {
             return this.questionsRepo.All().Where(x => x.Id == id).FirstOrDefault().Text;
+        }
+
+        public async Task AddQuestionAsync(string text, string email)
+        {
+            await this.questionsRepo.AddAsync(new Question { Text = text, Email = email });
+            await this.questionsRepo.SaveChangesAsync();
+        }
+
+        public async Task AddAnswerAsync(string questionId, string text)
+        {
+            await this.answersRepo.AddAsync(new Answer { Text = text, QuestionId = questionId });
+            await this.answersRepo.SaveChangesAsync();
         }
     }
 }

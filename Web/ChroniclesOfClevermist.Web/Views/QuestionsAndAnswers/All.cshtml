@@ -15,3 +15,8 @@
     </div>
 }
 
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <a class="btn btn-danger" asp-controller="QuestionsAndAnswers" asp-action="AddQuestion">Add Question</a>
+}
+

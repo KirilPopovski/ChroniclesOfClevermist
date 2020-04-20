@@ -1,0 +1,14 @@
+﻿@model ChroniclesOfClevermist.Web.ViewModels.QuestionsAndAnswers.AnswerInputModel
+@{
+    this.ViewData["Title"] = "Add answer";
+}
+
+<form enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Text">Answer text</label>
+        <input asp-for="Text" type="text" class="form-control">
+        <span asp-validation-for="Text" class="text-danger"></span>
+        <input asp-for="QuestionId" type="hidden" class="form-control" value="@this.TempData["QuestionId"]">
+    </div>
+    <button type="submit" value="Upload" class="btn btn-primary">Add answer</button>
+</form>
