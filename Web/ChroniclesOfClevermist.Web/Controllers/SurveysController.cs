@@ -23,7 +23,7 @@
             this.userManager = userManager;
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize]
         public IActionResult All()
         {
             var topics = this.surveyService.GetAll(this.userManager.GetUserId(this.User));

@@ -1,4 +1,4 @@
-﻿namespace ChroniclesOfClevermist.Services.Data.News
+﻿namespace ChroniclesOfClevermist.Services.Data.NewsSpace
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -46,6 +46,11 @@
             }
 
             return;
+        }
+
+        public int GetCount()
+        {
+            return this.newsRepo.All().Count();
         }
     }
 }

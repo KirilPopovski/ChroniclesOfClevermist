@@ -1,4 +1,4 @@
-﻿namespace ChroniclesOfClevermist.Services.Data.News
+﻿namespace ChroniclesOfClevermist.Services.Data.NewsSpace
 {
     using System;
     using System.Collections.Generic;

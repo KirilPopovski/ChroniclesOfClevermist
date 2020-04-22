@@ -10,7 +10,7 @@
     using ChroniclesOfClevermist.Data.Repositories;
     using ChroniclesOfClevermist.Data.Seeding;
     using ChroniclesOfClevermist.Services.Data;
-    using ChroniclesOfClevermist.Services.Data.News;
+    using ChroniclesOfClevermist.Services.Data.NewsSpace;
     using ChroniclesOfClevermist.Services.Data.QuestionsAndAnswers;
     using ChroniclesOfClevermist.Services.Data.Surveys;
     using ChroniclesOfClevermist.Services.Mapping;

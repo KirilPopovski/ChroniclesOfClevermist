@@ -13,8 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.0" />
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
@@ -27,8 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\ChroniclesOfClevermist.Data.Models\ChroniclesOfClevermist.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\ChroniclesOfClevermist.Data\ChroniclesOfClevermist.Data.csproj" />
     <ProjectReference Include="..\..\Services\ChroniclesOfClevermist.Services.Data\ChroniclesOfClevermist.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\ChroniclesOfClevermist.Services.Mapping\ChroniclesOfClevermist.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Web\ChroniclesOfClevermist.Web.ViewModels\ChroniclesOfClevermist.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\..\Web\ChroniclesOfClevermist.Web\ChroniclesOfClevermist.Web.csproj" />
   </ItemGroup>
 
 </Project>

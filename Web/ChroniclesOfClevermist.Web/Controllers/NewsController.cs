@@ -5,7 +5,7 @@
 
     using ChroniclesOfClevermist.Common;
     using ChroniclesOfClevermist.Data.Models;
-    using ChroniclesOfClevermist.Services.Data.News;
+    using ChroniclesOfClevermist.Services.Data.NewsSpace;
     using ChroniclesOfClevermist.Services.Messaging;
     using ChroniclesOfClevermist.Web.ViewModels.News;
     using Microsoft.AspNetCore.Authorization;
