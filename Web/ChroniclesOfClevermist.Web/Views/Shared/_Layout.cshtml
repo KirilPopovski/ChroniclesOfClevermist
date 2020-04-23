@@ -27,41 +27,39 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="QuestionsAndAnswers" asp-action="All">Q&A</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="About">About us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="History">Game story</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="SiteMap">Map of site</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Surveys" asp-action="All">Surveys</a>
-                        </li>
-                    </ul>
+                    <!--<ul class="navbar-nav flex-grow-1">-->
+
+                    <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Privacy policy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    <div class="dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About us
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Question and answers" asp-area="" asp-controller="QuestionsAndAnswers" asp-action="All">Q&A</a>
+                            <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="About the studio" asp-area="" asp-controller="Contacts" asp-action="About">About us</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Game lore" asp-area="" asp-controller="Contacts" asp-action="History">Game lore</a>
+                            <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Map" asp-area="" asp-controller="Contacts" asp-action="SiteMap">Map of site</a>
+                            <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Surveys page" asp-area="" asp-controller="Surveys" asp-action="All">Surveys</a>
+                        </div>
+                    </div>
+                    <a class="nav-link text-dark" data-toggle="tooltip" data-placement="top" title="Home page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </div>
             </div>
         </nav>
     </header>
-    
-    <div class="parallax">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @this.RenderBody()
-        </main>
-    </div>
-    
+
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-3">
+        @this.RenderBody()
+    </main>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

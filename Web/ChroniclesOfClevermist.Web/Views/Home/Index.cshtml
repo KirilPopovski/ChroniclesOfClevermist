@@ -2,37 +2,25 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
+<div class="parallax">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Chronicles of Clevermist!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <button type="button" class="btn btn-primary btn-purple" id="show">Let's get started!</button>
-        </div>
-        <div class="col-md-4">
-            <button type="button" onclick="location.href='@Url.Action("All", "News")'" class="btn btn-primary btn-blue" id="show2">News</button>
-        </div>
-        <div class="col-md-4">
-            <button type="button" onclick="location.href='https://store.steampowered.com/'" class="btn btn-primary">Buy on Steam</button>
-        </div>
+    <div class="text-center text-xl-center">
+        <h1 class="fonttitle">Welcome to </h1>
+        <h1 class="fonttitle">Chronicles of Clevermist!</h1>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <h4>Some text</h4>
-        </div>
-        <div class="col-md-3">
-            <h4>Some text</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>Some text</h4>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-purple m-4" id="show">Let's get started!</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-blue m-4" type="button" onclick="location.href='@Url.Action("All", "News")'" id="show2">News</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-third m-4" type="button" onclick="location.href='https://store.steampowered.com/'" id="showbutton">Buy on Steam</button>
+            </div>
         </div>
     </div>
 </div>
