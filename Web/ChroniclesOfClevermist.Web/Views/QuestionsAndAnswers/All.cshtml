@@ -3,20 +3,29 @@
 @{
     this.ViewData["Title"] = "QuestionsAndAnswers";
 }
+<h1 class="text-center fontsecond m-5">Questions</h1>
 
-@foreach (var question in Model.Questions)
-{
-    <div class="media">
-        <div class="media-body">
-            <h5 class="mt-0">@question.Text</h5>
-            @question.CreatedOn
-            <a class="btn btn-primary" onclick="location.href='@Url.Action("Details", "QuestionsAndAnswers", new { Id = question.Id})'">Read answers</a>
-        </div>
+<div align="center" class="m-5">
+    <div class="row">
+        @foreach (var question in Model.Questions)
+        {
+
+            <div class="col-md-6">
+                <div class="media border-bottom container-fluid">
+                    <div class="media-body">
+                        <h5 class="mt-0">@question.Text</h5>
+                        @question.CreatedOn
+                        <br />
+                        <a class="btn btn-primary" onclick="location.href='@Url.Action("Details", "QuestionsAndAnswers", new { Id = question.Id})'">Read answers</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+</div>
 
 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
 {
-    <a class="btn btn-danger" asp-controller="QuestionsAndAnswers" asp-action="AddQuestion">Add Question</a>
+    <a class="btn btn-danger text-center" asp-controller="QuestionsAndAnswers" asp-action="AddQuestion">Add Question</a>
 }
 

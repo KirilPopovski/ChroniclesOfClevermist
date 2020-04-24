@@ -3,9 +3,9 @@
     this.ViewData["Title"] = "Add answer";
 }
 
-<form enctype="multipart/form-data" method="post">
+<form class="container-fluid" enctype="multipart/form-data" method="post">
     <div class="form-group">
-        <label asp-for="Text">Answer text</label>
+        <label class="font-weight-bold" asp-for="Text">Answer text</label>
         <input asp-for="Text" type="text" class="form-control">
         <span asp-validation-for="Text" class="text-danger"></span>
         <input asp-for="QuestionId" type="hidden" class="form-control" value="@this.TempData["QuestionId"]">

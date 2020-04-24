@@ -4,14 +4,18 @@
     this.ViewData["Title"] = "Answers";
 }
 
-<div>
-    <p>@Model.QuestionText</p>
-</div>
+<h1 class="text-center fontsecond m-4">@Model.QuestionText</h1>
+
 
 @foreach (var answer in Model.Answers)
 {
-    <p>@answer.Text</p>
-    <p>@answer.CreatedOn</p>
+    <div class="media container-fluid">
+        <div class="media-body border-bottom">
+            @answer.Text
+            <p class="text-right">@answer.CreatedOn</p>
+            <br />
+        </div>
+    </div>
 }
 
 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
