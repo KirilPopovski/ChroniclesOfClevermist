@@ -4,24 +4,31 @@
     this.ViewData["Title"] = "Admin dashboard";
 }
 
-<h1>@this.ViewData["Title"]</h1>
+<h1 class="fontsecond text-center">@this.ViewData["Title"]</h1>
 
-<div class="alert-info">Number of users: @Model.CountOfUsers</div>
+<div class="text-center">
+    <div class="alert-info">Number of users: @Model.CountOfUsers</div>
+</div>
 
-<form enctype="multipart/form-data" method="post">
+<div class="text-center m-5">
+    <form enctype="multipart/form-data" method="post">
 
-    <div class="form-group">
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" type="text" class="form-control">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary" asp-controller="Dashboard" asp-action="RemoveUser">Remove user</button>
-</form>
+        <div class="form-group col-6 offset-3">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="text" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
 
-@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-{
-    <a class="btn btn-primary" asp-controller="Dashboard" asp-action="AddSurvey">Add survey</a>
-}
+        <button type="submit" class="btn btn-primary" asp-controller="Dashboard" asp-action="RemoveUser">Remove user</button>
+    </form>
+</div>
+
+<div class="text-center m-5">
+    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+    {
+        <a class="btn btn-primary" asp-controller="Dashboard" asp-action="AddSurvey">Add survey</a>
+    }
+</div>
 
 
 

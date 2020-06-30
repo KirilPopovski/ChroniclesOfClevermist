@@ -1,13 +1,14 @@
 ﻿namespace ChroniclesOfClevermist.Web.ViewModels.News
 {
-    using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
     using System.IO;
+
+    using Microsoft.AspNetCore.Http;
 
     public class NewsInputViewModel
     {
         [Required]
-        [MaxLength(30)]
+        [MaxLength(300)]
         public string Title { get; set; }
 
         [Required]
